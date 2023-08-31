@@ -141,5 +141,11 @@ def save_song_list_to_tsv(file_name: "song_list", songs: [])
 
   File.write(file_name, result)
 
-  result
+  true
+end
+
+def parse_songs_full(path:,file_name: "song_list")
+  songs = get_songs(path: path)
+  songs = select_single_version_of_song(songs: songs)
+  save_song_list_to_tsv(file_name: file_name, songs: songs)
 end
